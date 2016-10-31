@@ -19,55 +19,55 @@ class MLHero: SKSpriteNode {
     var isUpsideDown = false
     
     init() {
-        let size = CGSizeMake(32, 44)
-        super.init(texture: nil, color: UIColor.clearColor(), size: size)
+        let size = CGSize(width: 32, height: 44)
+        super.init(texture: nil, color: UIColor.clear, size: size)
         
         loadAppearance()
         loadPhysicsBodyWithSize(size)
     }
     
     func loadAppearance() {
-        body = SKSpriteNode(color: UIColor.blackColor(), size: CGSizeMake(self.frame.size.width, 40))
-        body.position = CGPointMake(0, 2)
+        body = SKSpriteNode(color: UIColor.black, size: CGSize(width: self.frame.size.width, height: 40))
+        body.position = CGPoint(x: 0, y: 2)
         addChild(body)
         
         let skinColor = UIColor(red: 207.0/255.0, green: 193.0/255.0, blue: 168.0/255.0, alpha: 1.0)
-        let face = SKSpriteNode(color: skinColor, size: CGSizeMake(self.frame.size.width, 12))
-        face.position = CGPointMake(0, 6)
+        let face = SKSpriteNode(color: skinColor, size: CGSize(width: self.frame.size.width, height: 12))
+        face.position = CGPoint(x: 0, y: 6)
         body.addChild(face)
         
-        let eyeColor = UIColor.whiteColor()
-        let leftEye = SKSpriteNode(color: eyeColor, size: CGSizeMake(6, 6))
+        let eyeColor = UIColor.white
+        let leftEye = SKSpriteNode(color: eyeColor, size: CGSize(width: 6, height: 6))
         let rightEye = leftEye.copy() as! SKSpriteNode
-        let pupil = SKSpriteNode(color: UIColor.blackColor(), size: CGSizeMake(3, 3))
+        let pupil = SKSpriteNode(color: UIColor.black, size: CGSize(width: 3, height: 3))
         
-        pupil.position = CGPointMake(2, 0)
+        pupil.position = CGPoint(x: 2, y: 0)
         leftEye.addChild(pupil)
         rightEye.addChild(pupil.copy() as! SKSpriteNode)
         
-        leftEye.position = CGPointMake(-4, 0)
+        leftEye.position = CGPoint(x: -4, y: 0)
         face.addChild(leftEye)
         
-        rightEye.position = CGPointMake(14, 0)
+        rightEye.position = CGPoint(x: 14, y: 0)
         face.addChild(rightEye)
         
-        let eyebrow = SKSpriteNode(color: UIColor.blackColor(), size: CGSizeMake(11, 1))
-        eyebrow.position = CGPointMake(-1, leftEye.size.height/2)
+        let eyebrow = SKSpriteNode(color: UIColor.black, size: CGSize(width: 11, height: 1))
+        eyebrow.position = CGPoint(x: -1, y: leftEye.size.height/2)
         leftEye.addChild(eyebrow)
         rightEye.addChild(eyebrow.copy() as! SKSpriteNode)
         
         let armColor = UIColor(red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0)
-        arm = SKSpriteNode(color: armColor, size: CGSizeMake(8, 14))
-        arm.anchorPoint = CGPointMake(0.5, 0.9)
-        arm.position = CGPointMake(-10, -7)
+        arm = SKSpriteNode(color: armColor, size: CGSize(width: 8, height: 14))
+        arm.anchorPoint = CGPoint(x: 0.5, y: 0.9)
+        arm.position = CGPoint(x: -10, y: -7)
         body.addChild(arm)
         
-        let hand = SKSpriteNode(color: skinColor, size: CGSizeMake(arm.size.width, 5))
-        hand.position = CGPointMake(0, -arm.size.height*0.9 + hand.size.height/2)
+        let hand = SKSpriteNode(color: skinColor, size: CGSize(width: arm.size.width, height: 5))
+        hand.position = CGPoint(x: 0, y: -arm.size.height*0.9 + hand.size.height/2)
         arm.addChild(hand)
         
-        leftFoot = SKSpriteNode(color: UIColor.blackColor(), size: CGSizeMake(9, 4))
-        leftFoot.position = CGPointMake(-6, -size.height/2 + leftFoot.size.height/2)
+        leftFoot = SKSpriteNode(color: UIColor.black, size: CGSize(width: 9, height: 4))
+        leftFoot.position = CGPoint(x: -6, y: -size.height/2 + leftFoot.size.height/2)
         addChild(leftFoot)
         
         rightFoot = leftFoot.copy() as! SKSpriteNode
@@ -75,8 +75,8 @@ class MLHero: SKSpriteNode {
         addChild(rightFoot)
     }
     
-    func loadPhysicsBodyWithSize(size: CGSize) {
-        physicsBody = SKPhysicsBody(rectangleOfSize: size)
+    func loadPhysicsBodyWithSize(_ size: CGSize) {
+        physicsBody = SKPhysicsBody(rectangleOf: size)
         physicsBody?.categoryBitMask = heroCategory
         physicsBody?.contactTestBitMask = wallCategory
         physicsBody?.affectedByGravity = false
@@ -96,36 +96,36 @@ class MLHero: SKSpriteNode {
         } else {
             scale = 1.0
         }
-        let translate = SKAction.moveByX(0, y: scale*(size.height + kMLGroundHeight), duration: 0.1)
-        let flip = SKAction.scaleYTo(scale, duration: 0.1)
+        let translate = SKAction.moveBy(x: 0, y: scale*(size.height + kMLGroundHeight), duration: 0.1)
+        let flip = SKAction.scaleY(to: scale, duration: 0.1)
         
-        runAction(translate)
-        runAction(flip)
+        run(translate)
+        run(flip)
     }
     
     func fall() {
         physicsBody?.affectedByGravity = true
-        physicsBody?.applyImpulse(CGVectorMake(-5, 30))
+        physicsBody?.applyImpulse(CGVector(dx: -5, dy: 30))
         
-        let rotateBack = SKAction.rotateByAngle(CGFloat(M_PI) / 2, duration: 0.4)
-        runAction(rotateBack)
+        let rotateBack = SKAction.rotate(byAngle: CGFloat(M_PI) / 2, duration: 0.4)
+        run(rotateBack)
     }
     
     func startRunning() {
-        let rotateBack = SKAction.rotateByAngle(-CGFloat(M_PI)/2.0, duration: 0.1)
-        arm.runAction(rotateBack)
+        let rotateBack = SKAction.rotate(byAngle: -CGFloat(M_PI)/2.0, duration: 0.1)
+        arm.run(rotateBack)
         
         performOneRunCycle()
     }
     
     func performOneRunCycle() {
-        let up = SKAction.moveByX(0, y: 2, duration: 0.05)
-        let down = SKAction.moveByX(0, y: -2, duration: 0.05)
+        let up = SKAction.moveBy(x: 0, y: 2, duration: 0.05)
+        let down = SKAction.moveBy(x: 0, y: -2, duration: 0.05)
         
-        leftFoot.runAction(up, completion: { () -> Void in
-            self.leftFoot.runAction(down)
-            self.rightFoot.runAction(up, completion: { () -> Void in
-                self.rightFoot.runAction(down, completion: { () -> Void in
+        leftFoot.run(up, completion: { () -> Void in
+            self.leftFoot.run(down)
+            self.rightFoot.run(up, completion: { () -> Void in
+                self.rightFoot.run(down, completion: { () -> Void in
                     self.performOneRunCycle()
                 })
             })
@@ -133,10 +133,10 @@ class MLHero: SKSpriteNode {
     }
     
     func breathe() {
-        let breatheOut = SKAction.moveByX(0, y: -2, duration: 1)
-        let breatheIn = SKAction.moveByX(0, y: 2, duration: 1)
+        let breatheOut = SKAction.moveBy(x: 0, y: -2, duration: 1)
+        let breatheIn = SKAction.moveBy(x: 0, y: 2, duration: 1)
         let breath = SKAction.sequence([breatheOut, breatheIn])
-        body.runAction(SKAction.repeatActionForever(breath))
+        body.run(SKAction.repeatForever(breath))
     }
     
     func stop() {

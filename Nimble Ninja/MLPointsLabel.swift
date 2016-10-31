@@ -17,7 +17,7 @@ class MLPointsLabel: SKLabelNode {
     init(num: Int) {
         super.init()
         
-        fontColor = UIColor.blackColor()
+        fontColor = UIColor.black
         fontName = "Helvetica"
         fontSize = 24.0
         
@@ -30,11 +30,11 @@ class MLPointsLabel: SKLabelNode {
     }
     
     func increment() {
-        number++
+        number += 1
         text = "\(number)"
     }
     
-    func setTo(num: Int) {
+    func setTo(_ num: Int) {
         self.number = num
         text = "\(self.number)"
     }

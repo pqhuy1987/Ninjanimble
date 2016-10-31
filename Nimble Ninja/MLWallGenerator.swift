@@ -11,12 +11,12 @@ import SpriteKit
 
 class MLWallGenerator: SKSpriteNode {
     
-    var generationTimer: NSTimer?
+    var generationTimer: Timer?
     var walls = [MLWall]()
     var wallTrackers = [MLWall]()
     
-    func startGeneratingWallsEvery(seconds: NSTimeInterval) {
-        generationTimer = NSTimer.scheduledTimerWithTimeInterval(seconds, target: self, selector: "generateWall", userInfo: nil, repeats: true)
+    func startGeneratingWallsEvery(_ seconds: TimeInterval) {
+        generationTimer = Timer.scheduledTimer(timeInterval: seconds, target: self, selector: #selector(MLWallGenerator.generateWall), userInfo: nil, repeats: true)
         
     }
     

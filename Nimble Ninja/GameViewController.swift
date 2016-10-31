@@ -18,17 +18,17 @@ class GameViewController: UIViewController {
         
         // Configure the view
         let skView = view as! SKView
-        skView.multipleTouchEnabled = false
+        skView.isMultipleTouchEnabled = false
         
         // Create and configure the scene
         scene = GameScene(size: skView.bounds.size)
-        scene.scaleMode = .AspectFill
+        scene.scaleMode = .aspectFill
         
         // Present the scenee
         skView.presentScene(scene)
     }
 
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate : Bool {
         return true
     }
 
@@ -45,7 +45,7 @@ class GameViewController: UIViewController {
         // Release any cached data, images, etc that aren't in use.
     }
 
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
 }

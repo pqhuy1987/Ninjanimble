@@ -13,18 +13,18 @@ class MLWall: SKSpriteNode {
    
     let WALL_WIDTH: CGFloat = 30.0
     let WALL_HEIGHT: CGFloat = 50.0
-    let WALL_COLOR = UIColor.blackColor()
+    let WALL_COLOR = UIColor.black
     
     init() {
-        let size = CGSizeMake(WALL_WIDTH, WALL_HEIGHT)
+        let size = CGSize(width: WALL_WIDTH, height: WALL_HEIGHT)
         super.init(texture: nil, color: WALL_COLOR, size: size)
         
         loadPhysicsBodyWithSize(size)
         startMoving()
     }
     
-    func loadPhysicsBodyWithSize(size: CGSize) {
-        physicsBody = SKPhysicsBody(rectangleOfSize: size)
+    func loadPhysicsBodyWithSize(_ size: CGSize) {
+        physicsBody = SKPhysicsBody(rectangleOf: size)
         physicsBody?.categoryBitMask = wallCategory
         physicsBody?.affectedByGravity = false
     }
@@ -34,8 +34,8 @@ class MLWall: SKSpriteNode {
     }
     
     func startMoving() {
-        let moveLeft = SKAction.moveByX(-kDefaultXToMovePerSecond, y: 0, duration: 1)
-        runAction(SKAction.repeatActionForever(moveLeft))
+        let moveLeft = SKAction.moveBy(x: -kDefaultXToMovePerSecond, y: 0, duration: 1)
+        run(SKAction.repeatForever(moveLeft))
     }
     
     func stopMoving() {

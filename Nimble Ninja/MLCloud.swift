@@ -13,9 +13,9 @@ class MLCloud: SKShapeNode {
     
     init(size: CGSize) {
         super.init()
-        let path = CGPathCreateWithEllipseInRect(CGRect(x: 0, y: 0, width: size.width, height: size.height), nil)
+        let path = CGPath(ellipseIn: CGRect(x: 0, y: 0, width: size.width, height: size.height), transform: nil)
         self.path = path
-        fillColor = UIColor.whiteColor()
+        fillColor = UIColor.white
         
         startMoving()
     }
@@ -25,8 +25,8 @@ class MLCloud: SKShapeNode {
     }
     
     func startMoving() {
-        let moveLeft = SKAction.moveByX(-10, y: 0, duration: 1)
-        runAction(SKAction.repeatActionForever(moveLeft))
+        let moveLeft = SKAction.moveBy(x: -10, y: 0, duration: 1)
+        run(SKAction.repeatForever(moveLeft))
     }
     
     

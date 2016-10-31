@@ -18,7 +18,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isStarted = false
     var isGameOver = false
     
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         backgroundColor = UIColor(red: 159.0/255.0, green: 201.0/255.0, blue: 244.0/255.0, alpha: 1.0)
         
         addMovingGround()
@@ -33,20 +33,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func addMovingGround() {
-        movingGround = MLMovingGround(size: CGSizeMake(view!.frame.width, kMLGroundHeight))
-        movingGround.position = CGPointMake(0, view!.frame.size.height/2)
+        movingGround = MLMovingGround(size: CGSize(width: view!.frame.width, height: kMLGroundHeight))
+        movingGround.position = CGPoint(x: 0, y: view!.frame.size.height/2)
         addChild(movingGround)
     }
     
     func addHero() {
         hero = MLHero()
-        hero.position = CGPointMake(70, movingGround.position.y + movingGround.frame.size.height/2 + hero.frame.size.height/2)
+        hero.position = CGPoint(x: 70, y: movingGround.position.y + movingGround.frame.size.height/2 + hero.frame.size.height/2)
         addChild(hero)
         hero.breathe()
     }
     
     func addCloudGenerator() {
-        cloudGenerator = MLCloudGenerator(color: UIColor.clearColor(), size: view!.frame.size)
+        cloudGenerator = MLCloudGenerator(color: UIColor.clear, size: view!.frame.size)
         cloudGenerator.position = view!.center
         addChild(cloudGenerator)
         cloudGenerator.populate(7)
@@ -54,7 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func addWallGenerator() {
-        wallGenerator = MLWallGenerator(color: UIColor.clearColor(), size: view!.frame.size)
+        wallGenerator = MLWallGenerator(color: UIColor.clear, size: view!.frame.size)
         wallGenerator.position = view!.center
         addChild(wallGenerator)
     }
@@ -65,28 +65,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         tapToStartLabel.position.x = view!.center.x
         tapToStartLabel.position.y = view!.center.y + 40
         tapToStartLabel.fontName = "Helvetica"
-        tapToStartLabel.fontColor = UIColor.blackColor()
+        tapToStartLabel.fontColor = UIColor.black
         tapToStartLabel.fontSize = 22.0
         addChild(tapToStartLabel)
-        tapToStartLabel.runAction(blinkAnimation())
+        tapToStartLabel.run(blinkAnimation())
     }
     
     func addPointsLabels() {
         let pointsLabel = MLPointsLabel(num: 0)
-        pointsLabel.position = CGPointMake(20.0, view!.frame.size.height - 35)
+        pointsLabel.position = CGPoint(x: 20.0, y: view!.frame.size.height - 35)
         pointsLabel.name = "pointsLabel"
         addChild(pointsLabel)
         
         let highscoreLabel = MLPointsLabel(num: 0)
         highscoreLabel.name = "highscoreLabel"
-        highscoreLabel.position = CGPointMake(view!.frame.size.width - 20, view!.frame.size.height - 35)
+        highscoreLabel.position = CGPoint(x: view!.frame.size.width - 20, y: view!.frame.size.height - 35)
         addChild(highscoreLabel)
         
-        let highscoreTextLabel = SKLabelNode(text: "High")
-        highscoreTextLabel.fontColor = UIColor.blackColor()
+        let highscoreTextLabel = SKLabelNode(text: "BEST")
+        highscoreTextLabel.fontColor = UIColor.black
         highscoreTextLabel.fontSize = 14.0
         highscoreTextLabel.fontName = "Helvetica"
-        highscoreTextLabel.position = CGPointMake(0, -20)
+        highscoreTextLabel.position = CGPoint(x: 0, y: -20)
         highscoreLabel.addChild(highscoreTextLabel)
     }
     
@@ -95,17 +95,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func loadHighscore() {
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         
-        let highscoreLabel = childNodeWithName("highscoreLabel") as! MLPointsLabel
-        highscoreLabel.setTo(defaults.integerForKey("highscore"))
+        let highscoreLabel = childNode(withName: "highscoreLabel") as! MLPointsLabel
+        highscoreLabel.setTo(defaults.integer(forKey: "highscore"))
     }
     
     // MARK: - Game Lifecycle
     func start() {
         isStarted = true
         
-        let tapToStartLabel = childNodeWithName("tapToStartLabel")
+        let tapToStartLabel = childNode(withName: "tapToStartLabel")
         tapToStartLabel?.removeFromParent()
         
         hero.stop()
@@ -126,24 +126,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // create game over label
         let gameOverLabel = SKLabelNode(text: "Game Over!")
-        gameOverLabel.fontColor = UIColor.blackColor()
+        gameOverLabel.fontColor = UIColor.black
         gameOverLabel.fontName = "Helvetica"
         gameOverLabel.position.x = view!.center.x
         gameOverLabel.position.y = view!.center.y + 40
         gameOverLabel.fontSize = 22.0
         addChild(gameOverLabel)
-        gameOverLabel.runAction(blinkAnimation())
+        gameOverLabel.run(blinkAnimation())
         
         
         // save current points label value
-        let pointsLabel = childNodeWithName("pointsLabel") as! MLPointsLabel
-        let highscoreLabel = childNodeWithName("highscoreLabel") as! MLPointsLabel
+        let pointsLabel = childNode(withName: "pointsLabel") as! MLPointsLabel
+        let highscoreLabel = childNode(withName: "highscoreLabel") as! MLPointsLabel
         
         if highscoreLabel.number < pointsLabel.number {
             highscoreLabel.setTo(pointsLabel.number)
             
-            let defaults = NSUserDefaults.standardUserDefaults()
-            defaults.setInteger(highscoreLabel.number, forKey: "highscore")
+            let defaults = UserDefaults.standard
+            defaults.set(highscoreLabel.number, forKey: "highscore")
         }
     }
     
@@ -151,14 +151,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         cloudGenerator.stopGenerating()
         
         let newScene = GameScene(size: view!.bounds.size)
-        newScene.scaleMode = .AspectFill
+        newScene.scaleMode = .aspectFill
         
         view!.presentScene(newScene)
     }
     
     
     
-     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if isGameOver {
             restart()
         } else if !isStarted {
@@ -168,17 +168,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
    
-    override func update(currentTime: CFTimeInterval) {
+    override func update(_ currentTime: TimeInterval) {
         
         if wallGenerator.wallTrackers.count > 0 {
         
             let wall = wallGenerator.wallTrackers[0] as MLWall
             
-            let wallLocation = wallGenerator.convertPoint(wall.position, toNode: self)
+            let wallLocation = wallGenerator.convert(wall.position, to: self)
             if wallLocation.x < hero.position.x {
-                wallGenerator.wallTrackers.removeAtIndex(0)
+                wallGenerator.wallTrackers.remove(at: 0)
                 
-                let pointsLabel = childNodeWithName("pointsLabel") as! MLPointsLabel
+                let pointsLabel = childNode(withName: "pointsLabel") as! MLPointsLabel
                 pointsLabel.increment()
                 
                 
@@ -188,7 +188,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     // MARK: - SKPhysicsContactDelegate
-    func didBeginContact(contact: SKPhysicsContact) {
+    func didBegin(_ contact: SKPhysicsContact) {
         if !isGameOver {
             gameOver()
         }
@@ -197,9 +197,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // MARK: - Animations
     func blinkAnimation() -> SKAction {
         let duration = 0.4
-        let fadeOut = SKAction.fadeAlphaTo(0.0, duration: duration)
-        let fadeIn = SKAction.fadeAlphaTo(1.0, duration: duration)
+        let fadeOut = SKAction.fadeAlpha(to: 0.0, duration: duration)
+        let fadeIn = SKAction.fadeAlpha(to: 1.0, duration: duration)
         let blink = SKAction.sequence([fadeOut, fadeIn])
-        return SKAction.repeatActionForever(blink)
+        return SKAction.repeatForever(blink)
     }
 }

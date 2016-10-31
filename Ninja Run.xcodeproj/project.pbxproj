@@ -39,7 +39,7 @@
 		4C0AD7261ADD7C82004CC208 /* MLPointsLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLPointsLabel.swift; sourceTree = "<group>"; };
 		4C37AE5F1A7B0AB2005A233F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4C47B85B1A740FAF0060DC71 /* MLMovingGround.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMovingGround.swift; sourceTree = "<group>"; };
-		4C922D0E1A7023D400472BB2 /* Nimble Ninja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nimble Ninja.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C922D0E1A7023D400472BB2 /* Ninja Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ninja Run.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C922D121A7023D400472BB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C922D131A7023D400472BB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C922D171A7023D400472BB2 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -47,7 +47,7 @@
 		4C922D1C1A7023D400472BB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C922D1E1A7023D400472BB2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4C922D211A7023D400472BB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		4C922D271A7023D400472BB2 /* Nimble NinjaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Nimble NinjaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C922D271A7023D400472BB2 /* Ninja RunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ninja RunTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C922D2C1A7023D400472BB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C922D2D1A7023D400472BB2 /* Nimble_NinjaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nimble_NinjaTests.swift; sourceTree = "<group>"; };
 		4CC030581A75922200B72617 /* MLHero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLHero.swift; sourceTree = "<group>"; };
@@ -96,8 +96,8 @@
 		4C922D0F1A7023D400472BB2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4C922D0E1A7023D400472BB2 /* Nimble Ninja.app */,
-				4C922D271A7023D400472BB2 /* Nimble NinjaTests.xctest */,
+				4C922D0E1A7023D400472BB2 /* Ninja Run.app */,
+				4C922D271A7023D400472BB2 /* Ninja RunTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -169,9 +169,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4C922D0D1A7023D400472BB2 /* Nimble Ninja */ = {
+		4C922D0D1A7023D400472BB2 /* Ninja Run */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4C922D311A7023D400472BB2 /* Build configuration list for PBXNativeTarget "Nimble Ninja" */;
+			buildConfigurationList = 4C922D311A7023D400472BB2 /* Build configuration list for PBXNativeTarget "Ninja Run" */;
 			buildPhases = (
 				4C922D0A1A7023D400472BB2 /* Sources */,
 				4C922D0B1A7023D400472BB2 /* Frameworks */,
@@ -181,14 +181,14 @@
 			);
 			dependencies = (
 			);
-			name = "Nimble Ninja";
+			name = "Ninja Run";
 			productName = "Nimble Ninja";
-			productReference = 4C922D0E1A7023D400472BB2 /* Nimble Ninja.app */;
+			productReference = 4C922D0E1A7023D400472BB2 /* Ninja Run.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4C922D261A7023D400472BB2 /* Nimble NinjaTests */ = {
+		4C922D261A7023D400472BB2 /* Ninja RunTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4C922D341A7023D400472BB2 /* Build configuration list for PBXNativeTarget "Nimble NinjaTests" */;
+			buildConfigurationList = 4C922D341A7023D400472BB2 /* Build configuration list for PBXNativeTarget "Ninja RunTests" */;
 			buildPhases = (
 				4C922D231A7023D400472BB2 /* Sources */,
 				4C922D241A7023D400472BB2 /* Frameworks */,
@@ -199,9 +199,9 @@
 			dependencies = (
 				4C922D291A7023D400472BB2 /* PBXTargetDependency */,
 			);
-			name = "Nimble NinjaTests";
+			name = "Ninja RunTests";
 			productName = "Nimble NinjaTests";
-			productReference = 4C922D271A7023D400472BB2 /* Nimble NinjaTests.xctest */;
+			productReference = 4C922D271A7023D400472BB2 /* Ninja RunTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -216,14 +216,17 @@
 				TargetAttributes = {
 					4C922D0D1A7023D400472BB2 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = JQNK74493B;
+						LastSwiftMigration = 0810;
 					};
 					4C922D261A7023D400472BB2 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 0810;
 						TestTargetID = 4C922D0D1A7023D400472BB2;
 					};
 				};
 			};
-			buildConfigurationList = 4C922D091A7023D400472BB2 /* Build configuration list for PBXProject "Nimble Ninja" */;
+			buildConfigurationList = 4C922D091A7023D400472BB2 /* Build configuration list for PBXProject "Ninja Run" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -236,8 +239,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4C922D0D1A7023D400472BB2 /* Nimble Ninja */,
-				4C922D261A7023D400472BB2 /* Nimble NinjaTests */,
+				4C922D0D1A7023D400472BB2 /* Ninja Run */,
+				4C922D261A7023D400472BB2 /* Ninja RunTests */,
 			);
 		};
 /* End PBXProject section */
@@ -295,7 +298,7 @@
 /* Begin PBXTargetDependency section */
 		4C922D291A7023D400472BB2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4C922D0D1A7023D400472BB2 /* Nimble Ninja */;
+			target = 4C922D0D1A7023D400472BB2 /* Ninja Run */;
 			targetProxy = 4C922D281A7023D400472BB2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -401,9 +404,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JQNK74493B;
 				INFOPLIST_FILE = "Nimble Ninja/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.twokingstudio.ninja.100;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -411,9 +419,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JQNK74493B;
 				INFOPLIST_FILE = "Nimble Ninja/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.twokingstudio.ninja.100;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -432,7 +445,8 @@
 				INFOPLIST_FILE = "Nimble NinjaTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nimble Ninja.app/Nimble Ninja";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ninja Run.app/Ninja Run";
 			};
 			name = Debug;
 		};
@@ -447,14 +461,15 @@
 				INFOPLIST_FILE = "Nimble NinjaTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nimble Ninja.app/Nimble Ninja";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ninja Run.app/Ninja Run";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4C922D091A7023D400472BB2 /* Build configuration list for PBXProject "Nimble Ninja" */ = {
+		4C922D091A7023D400472BB2 /* Build configuration list for PBXProject "Ninja Run" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4C922D2F1A7023D400472BB2 /* Debug */,
@@ -463,7 +478,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4C922D311A7023D400472BB2 /* Build configuration list for PBXNativeTarget "Nimble Ninja" */ = {
+		4C922D311A7023D400472BB2 /* Build configuration list for PBXNativeTarget "Ninja Run" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4C922D321A7023D400472BB2 /* Debug */,
@@ -472,7 +487,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4C922D341A7023D400472BB2 /* Build configuration list for PBXNativeTarget "Nimble NinjaTests" */ = {
+		4C922D341A7023D400472BB2 /* Build configuration list for PBXNativeTarget "Ninja RunTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4C922D351A7023D400472BB2 /* Debug */,
